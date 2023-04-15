@@ -1,0 +1,26 @@
+.form{
+    display:flex;
+    flex-direction: column;
+    gap:20px
+}
+
+.input{
+    height: 30px;
+    text-align: center;
+    font-size: 1.1em;
+    border: 0;
+    background-color: transparent;
+}
+
+.button{
+    margin-top: 30px;
+}
+
+.error{
+    margin-top: 50px;
+    position: absolute;
+    width: 315px;
+    text-align: center;
+    color: rgb(191, 88, 88);
+    font-weight: 1000;
+}
