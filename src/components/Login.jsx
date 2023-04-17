@@ -23,12 +23,12 @@ const Login = () => {
     }
 // https://prueba-backend.azurewebsites.net
     const verifyToken = async () => {
-        const {data} = await axios.post("https://prueba-backend.azurewebsites.net/auth",{id:1},{headers:{authorization:`Bearer ${localStorage.getItem("token")}`}})
-        return data.auth
+         const {data} = await axios.post("https://prueba-backend.azurewebsites.net/auth",{id:1},{headers:{authorization:`Bearer ${localStorage.getItem("token")}`}})
+          if(data.auth) return navigate("/home")
       }
     
       useEffect(() => {
-        localStorage.getItem("token") ? (verifyToken() ? navigate("/home") : "") : ""
+        localStorage.getItem("token") ? verifyToken() : ""
       }, [])
 
       const handleInput = (e) => {
