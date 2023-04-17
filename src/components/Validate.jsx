@@ -7,7 +7,7 @@ const Validate = () => {
     const token = useParams()
     const navigate = useNavigate()
     useEffect(() => {
-        axios.post("http://localhost:3000/validate", token)
+        axios.post("https://prueba-backend.azurewebsites.net/validate", token)
         .then(res => setMsg("Cuenta verificada exitosamente"), res => setMsg("La cuenta no pudo ser verificada"))
     })
   return(

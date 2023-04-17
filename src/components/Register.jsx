@@ -17,7 +17,7 @@ const Register = () => {
 
   const create = (e) => {
     e.preventDefault()
-    axios.post("http://localhost:3000/register", form)
+    axios.post("https://prueba-backend.azurewebsites.net/register", form)
     .then(res => {setMsg("Email de verificacion enviado"); setEmail(`/validate/${res.data}`); setErrorEmail(`/validate/y2372y7ehh27e36rghwd7e36gr3dh7sha8hsh72eg2sha8`)}, err => setMsg(err.response.data.error))
   }
 
