@@ -11,7 +11,8 @@ const Home = () => {
   }
 
   const verifyToken = async () => {
-    const {data} = await axios.post("https://prueba-backend.azurewebsites.net/auth",{id:1},{headers:{authorization:`Bearer ${localStorage.getItem("token")}`}})
+    const {data} = await axios.post("http://localhost:3000/auth",{id:1},{headers:{authorization:`Bearer ${localStorage.getItem("token")}`}})
+    console.log(data.auth)
     return data.auth
   }
 

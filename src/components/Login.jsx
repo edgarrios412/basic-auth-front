@@ -11,18 +11,19 @@ const Login = () => {
         pass:""
     })
 
-    const auth = async () => {
-        const {data} = await axios.post("https://prueba-backend.azurewebsites.net/login", form)
+    const auth = async (e) => {
+      e.preventDefault()
+        const {data} = await axios.post("http://localhost:3000/login", form)
         if(!data.error){
-            localStorage.setItem("token", data.token)
+            localStorage.setItem("token", data)
             navigate("/home")
         }else{
             setError(data.error)
         }
     }
-
+// https://prueba-backend.azurewebsites.net
     const verifyToken = async () => {
-        const {data} = await axios.post("https://prueba-backend.azurewebsites.net/auth",{id:1},{headers:{authorization:`Bearer ${localStorage.getItem("token")}`}})
+        const {data} = await axios.post("http://localhost:3000/auth",{id:1},{headers:{authorization:`Bearer ${localStorage.getItem("token")}`}})
         return data.auth
       }
     
@@ -44,9 +45,10 @@ const Login = () => {
         <form className={style.form}>
             <input className={style.input} placeholder="Usuario" name= "user" onChange={handleInput} value={form.user}/>
             <input className={style.input} placeholder="Contraseña" name = "pass" onChange={handleInput} value={form.pass}/>
-        </form>
       <button className={style.button} onClick={auth}>Ingresar</button>
-      {error && <p className={style.error}>{error}</p>}
+      <button onClick={() => navigate("/register")}>Registrarme</button>
+      {error && <h4 className={style.error}>{error}</h4>}
+      </form>
     </>
   )
 };
